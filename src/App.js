@@ -6,6 +6,8 @@ import { withCookies, Cookies } from 'react-cookie'
 import { instanceOf } from 'prop-types'
 import jwt from 'jsonwebtoken'
 import { compose } from 'recompose'
+import 'typeface-roboto'
+
 
 class App extends Component {
   static propTypes = {
@@ -16,7 +18,8 @@ class App extends Component {
     super(props);
     const { cookies } = this.props
     this.state = {
-      isLoggedIn: cookies.get('isLoggedIn')
+      isLoggedIn: cookies.get('isLoggedIn'),
+      shouldRemember: false
     }
   }
 
@@ -27,15 +30,20 @@ class App extends Component {
 
   onSubmit = (e) => {
     e.preventDefault()
+    this.setState({
+      shouldRemember: e.target.checkbox.checked
+    })
     const { cookies } = this.props
     const newUser = {
       email: e.target.emailInput.value,
       pw: e.target.pwInput.value
     }
+    if(this.state.shouldRemember){
     cookies.set('user', this.createToken( newUser ), { path: '/' })
-    cookies.set('isLoggedIn', true, { path:'/' } )
+    cookies.set('isLoggedIn', this.state.shouldRemember, { path:'/' } )
     this.props.history.push('/posts')
     window.location.reload()
+    }
   }
 
   render() {
@@ -44,7 +52,7 @@ class App extends Component {
         <div className="App">
         <Switch>
           <Route path='/' exact render={() => (
-            <LogInPage onSubmit={ this.onSubmit }/>
+            <LogInPage shouldRemember={ this.state.shouldRemember } onSubmit={ this.onSubmit }/>
           )}/>
           <Route exact path="/posts" render={() => (
             this.state.isLoggedIn 

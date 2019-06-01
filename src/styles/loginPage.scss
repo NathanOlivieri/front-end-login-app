@@ -1,0 +1,10 @@
+@import './variables.scss';
+
+.loginPage {
+    @include fs; //mixing makes div same size as screen
+    @include flex-col-center;
+    background-image: url('../runner-login-bg.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

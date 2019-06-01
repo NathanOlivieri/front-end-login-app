@@ -28,11 +28,25 @@ class PostsPage extends Component {
             posts: data
         })
     }
-     
+
+    insertBestTeam = (string) => {
+        let cappedRandomizer = Math.floor(Math.random() * Math.floor(string.split(' ').length))
+        let res = string.split(' ')
+        res.splice(cappedRandomizer, 0, 'The Toronto Raptors are going to win the finals')
+        let str = res.join(' ')
+        return str
+    }
+
     render() {
         return (
             <div>
                <h1>THIS is the POST PAGE</h1> 
+               {this.state.posts.map((item, index) => (
+                   <div key={ index }>
+                       <h2>{ item.title.toUpperCase() }</h2>
+                       <p>{ this.insertBestTeam( item.body ) }</p>
+                   </div>
+               ))}
             </div>
         )
     }
