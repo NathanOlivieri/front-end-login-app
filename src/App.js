@@ -20,6 +20,7 @@ class App extends Component {
     this.state = {
       isLoggedIn: cookies.get('isLoggedIn'),
       shouldRemember: false
+      //add state var for showMsg to render if onSubmit was called w/ shouldRemember:false in else statement
     }
   }
 

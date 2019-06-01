@@ -6,10 +6,11 @@ const StyledButton = styled.button`
     color: ${props => props.primary ? "white" : "rgb(238, 50, 50)"};
     font-size: 1.2em;
     font-family: 'roboto';
-    margin: 2em 5em;
-    padding: 1em 8em;
+    margin: 1em 5em;
+    padding: 1em;
     border: none;
     border-radius: 10px;
+    width: 355px
 `;
 
 export default function Button(props) {
