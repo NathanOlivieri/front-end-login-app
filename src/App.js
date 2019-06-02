@@ -13,7 +13,7 @@ class App extends Component {
   static propTypes = {
     cookies: instanceOf(Cookies).isRequired
   };
-
+//set Initial State
   constructor(props){
     super(props);
     const { cookies } = this.props
@@ -28,10 +28,10 @@ class App extends Component {
     const token = jwt.sign(user, 'testShhhh')
     return token
   }
-
+//function handles login form submit. 
+//Checks state to see if user clicked remember me and inputs user info into cookies before redirecting to posts page
   onSubmit = (e) => {
     e.preventDefault()
-
     this.setState({
       shouldRemember: e.target.checkbox.checked
     })
@@ -51,7 +51,7 @@ class App extends Component {
       })
     }
   }
-
+//Called when user clicks remember me controls error message
   clearAttempts = (e) => {
     console.log(e.target.checked)
     this.setState({

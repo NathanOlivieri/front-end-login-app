@@ -1,9 +1,12 @@
-# runner-app
+# Runner-app
 created by Nathan Olivieri <br>
 [Nathan Olivieri](mailto:nathan.olivieri1@gmail.com)<br>
 
 App was created using create-react-app<br>
+github link:<br>
+https://github.com/NathanOlivieri/front-end-login-app.git<br>
 
+Wasn't sure if you are OK with this being public so it is currently private. Let me know which github user I can add to collaborators or if you want me to just make it a public repo and maybe change some names around. All of the files needed to run app locally are in the zipped folder I sent as well.
 ### Install dependencies
 
 cd into repo <br>
