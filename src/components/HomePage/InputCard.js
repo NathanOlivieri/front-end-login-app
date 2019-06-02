@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Input from '../HomePage/Input'
+import Input from '../Molecules/Input'
 
 const Card = styled.div`
     border: solid 1px #c0c0c0;

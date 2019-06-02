@@ -2,9 +2,12 @@
 
 .loginPage {
     @include fs; //mixing makes div same size as screen
-    @include flex-col-center;
+    @include flex-col-center; //mixin centers everything in the div.
     background-image: url('../runner-login-bg.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    @media (max-width: 426px) {
+        margin-top: 2em;
+    }
 }

@@ -1,0 +1,7 @@
+@import './variables.scss';
+
+.postsPage {
+    @include flex-col-center; //mixin centers everything in the div.
+    font-family: 'roboto';
+    margin-top: 86px;
+}

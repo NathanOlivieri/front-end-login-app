@@ -8,11 +8,12 @@ const Header = styled.header`
     font-family: 'roboto';
     font-style: italic
     margin: 3em 0;
+    width: ${props => props.width || "133px"}
 `;
 
 export default function Logo(props) {
     return (
-        <Header>
+        <Header width={ props.width }>
             <h1>{ props.msg }</h1>
         </Header>
     )

@@ -19,8 +19,8 @@ class App extends Component {
     const { cookies } = this.props
     this.state = {
       isLoggedIn: cookies.get('isLoggedIn'),
-      shouldRemember: false
-      //add state var for showMsg to render if onSubmit was called w/ shouldRemember:false in else statement
+      shouldRemember: false,
+      attemptedLogin: false
     }
   }
 
@@ -31,6 +31,7 @@ class App extends Component {
 
   onSubmit = (e) => {
     e.preventDefault()
+
     this.setState({
       shouldRemember: e.target.checkbox.checked
     })
@@ -40,11 +41,23 @@ class App extends Component {
       pw: e.target.pwInput.value
     }
     if(this.state.shouldRemember){
-    cookies.set('user', this.createToken( newUser ), { path: '/' })
-    cookies.set('isLoggedIn', this.state.shouldRemember, { path:'/' } )
-    this.props.history.push('/posts')
-    window.location.reload()
+      cookies.set('user', this.createToken( newUser ), { path: '/' })
+      cookies.set('isLoggedIn', this.state.shouldRemember, { path:'/' } )
+      this.props.history.push('/posts')
+      window.location.reload()
+    }else if (!this.state.shouldRemember) {
+      this.setState({
+        attemptedLogin: true
+      })
     }
+  }
+
+  clearAttempts = (e) => {
+    console.log(e.target.checked)
+    this.setState({
+      attemptedLogin: !e.target.checked,
+      shouldRemember: e.target.checked
+    })
   }
 
   render() {
@@ -53,7 +66,7 @@ class App extends Component {
         <div className="App">
         <Switch>
           <Route path='/' exact render={() => (
-            <LogInPage shouldRemember={ this.state.shouldRemember } onSubmit={ this.onSubmit }/>
+            <LogInPage shouldRemember={ this.state.shouldRemember } attemptedLogin={ this.state.attemptedLogin } onSubmit={ this.onSubmit } clearAttempts={ this.clearAttempts }/>
           )}/>
           <Route exact path="/posts" render={() => (
             this.state.isLoggedIn 

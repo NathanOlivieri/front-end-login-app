@@ -6,7 +6,10 @@ const StyledDiv = styled.div`
     display: flex;
     align-items: center;
     span {
-     padding-bottom: 5px;
+        padding-bottom: 5px;
+    }
+    label {
+        height: 2em;
     }
     label:before {
         content: "";
@@ -26,8 +29,8 @@ const StyledDiv = styled.div`
         border-left: 2px rgb(238, 50, 50) solid;
         border-bottom: 2px rgb(238, 50, 50) solid;
         transform: rotate(-45deg);
-        right: 135px;
-        top: -5px;
+        right: ${props => props.sort ? "-2px":"135px"};
+        top: ${props => props.sort ? "-26px":"-5px"};
     }
     input[type="checkbox"] + label::after {
         content: none;
@@ -49,9 +52,9 @@ const HideDefault = styled.input`
 
 export default function Checkbox( props ) {
     return (
-        <StyledDiv>
-            <HideDefault type="checkbox" id="checkbox_1" name="checkbox"/>
-            <label for="checkbox_1"><span>{ props.label }</span></label>
+        <StyledDiv sort={ props.sort || false }>
+            <HideDefault onClick={ props.handleChange } type="checkbox" id="checkbox_1" name="checkbox"/>
+            <label htmlFor="checkbox_1"><span>{ props.label }</span></label>
         </StyledDiv>
     )
 }

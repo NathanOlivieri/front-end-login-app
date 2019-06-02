@@ -11,6 +11,10 @@ const StyledButton = styled.button`
     border: none;
     border-radius: 10px;
     width: 355px
+    @media only screen and (max-width: 450px) {
+        width: 250px;
+        margin: 1em 0.5em;
+    }
 `;
 
 export default function Button(props) {
